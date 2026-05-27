@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JMNexa | AI Automation for Service Businesses</title>
+  <meta name="description" content="JMNexa installs AI receptionists, missed-call text back, follow-up automations, and booking systems for service businesses." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07111f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(7, 17, 31, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: #37d4ff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #37d4ff, #2563eb);
+      color: #ffffff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 14px 32px rgba(37, 99, 235, 0.32);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(55, 212, 255, 0.28), transparent 65%);
+      right: -140px;
+      top: -140px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 54px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(55, 212, 255, 0.35);
+      border-radius: 999px;
+      color: #8be9ff;
+      background: rgba(55, 212, 255, 0.08);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5.25rem);
+      line-height: 0.98;
+      letter-spacing: -2.8px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.18rem;
+      color: #cbd5e1;
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .industries {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    .call-box {
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .call-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .call-row:last-child {
+      border-bottom: none;
+    }
+
+    .status {
+      font-size: 0.82rem;
+      color: #16a34a;
+      font-weight: 800;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.8rem;
+      color: #37d4ff;
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: #cbd5e1;
+      font-size: 1.08rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #cbd5e1;
+    }
+
+    .problem {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    .problem .section-title p,
+    .problem .card p {
+      color: #475569;
+    }
+
+    .problem .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #37d4ff;
+      color: #07111f;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .price-card {
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 30px;
+      padding: 36px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin: 12px 0;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: #64748b;
+    }
+
+    ul {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+
+    .price-card li {
+      color: #334155;
+    }
+
+    li::before {
+      content: "✓";
+      color: #37d4ff;
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    .faq {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    .faq-item {
+      padding: 24px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      color: #475569;
+    }
+
+    .cta {
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(55, 212, 255, 0.18), transparent 45%), #07111f;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      max-width: 650px;
+      margin: 0 auto 26px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      font-size: 0.92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .pricing-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">JM<span>Nexa</span></a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:Jmartin@jmnexa.com" class="btn">Book A Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI automation for local service businesses</div>
+          <h1>Never Miss Another Lead Again.</h1>
+          <p>
+            JMNexa installs AI receptionists, missed-call text back systems, automated follow-ups, appointment booking, and lead pipelines for service businesses that want more booked jobs without hiring more office staff.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:Jmartin@jmnexa.com?subject=JMNexa Demo Request" class="btn">Get A Free Demo</a>
+            <a href="#pricing" class="btn btn-outline">View Pricing</a>
+          </div>
+          <div class="industries">
+            <span class="pill">HVAC</span>
+            <span class="pill">Roofing</span>
+            <span class="pill">Plumbing</span>
+            <span class="pill">Landscaping</span>
+            <span class="pill">Pool Companies</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="call-box">
+            <div class="call-row">
+              <div>
+                <strong>New Lead</strong><br />Emergency AC repair
+              </div>
+              <span class="status">Answered</span>
+            </div>
+            <div class="call-row">
+              <div>
+                <strong>AI Follow-Up</strong><br />Quote reminder sent
+              </div>
+              <span class="status">Sent</span>
+            </div>
+            <div class="call-row">
+              <div>
+                <strong>Appointment</strong><br />Booked for tomorrow
+              </div>
+              <span class="status">Booked</span>
+            </div>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><strong>24/7</strong>Lead response</div>
+            <div class="metric"><strong>0</strong>Missed follow-ups</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="container">
+        <div class="section-title">
+          <h2>Your business is losing money every time a call goes unanswered.</h2>
+          <p>
+            Customers do not wait around. If they call and nobody answers, they move to the next company. JMNexa helps your business respond instantly, follow up automatically, and book more jobs.
+          </p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>Missed Calls</h3>
+            <p>Turn missed calls into instant text conversations so leads do not disappear.</p>
+          </div>
+          <div class="card">
+            <h3>Slow Follow-Up</h3>
+            <p>Automatically follow up with leads who requested quotes but never booked.</p>
+          </div>
+          <div class="card">
+            <h3>Manual Scheduling</h3>
+            <p>Let your system qualify customers and schedule appointments directly on your calendar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>What JMNexa installs for your business</h2>
+          <p>Everything is built around one goal: capture more leads and turn them into booked appointments.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>AI Receptionist</h3>
+            <p>Answers inbound calls, handles common questions, qualifies leads, and helps route customers.</p>
+          </div>
+          <div class="card">
+            <h3>Missed Call Text Back</h3>
+            <p>When a call is missed, the customer immediately receives a text response from your business.</p>
+          </div>
+          <div class="card">
+            <h3>Automated Follow-Ups</h3>
+            <p>Follow up with new leads, old quotes, no-shows, and customers who have not responded.</p>
+          </div>
+          <div class="card">
+            <h3>Calendar Booking</h3>
+            <p>Connect your calendar so qualified customers can get booked without back-and-forth messages.</p>
+          </div>
+          <div class="card">
+            <h3>Lead Pipeline</h3>
+            <p>Track every lead from first contact to booked job inside a simple CRM pipeline.</p>
+          </div>
+          <div class="card">
+            <h3>Review Requests</h3>
+            <p>Automatically ask completed customers for Google reviews to help build local trust.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-title">
+          <h2>Simple setup. Real business impact.</h2>
+          <p>We build, connect, and maintain the system so you can focus on running the business.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <h3>Connect</h3>
+            <p>We connect your phone number, calendar, CRM pipeline, and customer intake process.</p>
+          </div>
+          <div class="step">
+            <h3>Customize</h3>
+            <p>We customize the AI receptionist and automations around your business, services, and booking rules.</p>
+          </div>
+          <div class="step">
+            <h3>Launch</h3>
+            <p>Your business starts answering, texting, following up, and booking leads automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container pricing-wrap">
+        <div class="section-title">
+          <h2>Simple monthly pricing</h2>
+          <p>No complicated packages. One system built to help your service business capture and convert more leads.</p>
+          <ul>
+            <li>Built for local service businesses</li>
+            <li>Setup, support, and maintenance included</li>
+            <li>Designed to reduce missed opportunities</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>JMNexa Automation System</h3>
+          <div class="price">$1,250 <span>/ month</span></div>
+          <p>Includes the core automation system your business needs to respond faster and book more jobs.</p>
+          <ul>
+            <li>AI receptionist</li>
+            <li>Missed call text back</li>
+            <li>Automated lead follow-ups</li>
+            <li>Calendar integration</li>
+            <li>CRM lead pipeline</li>
+            <li>Review request automation</li>
+            <li>Ongoing support and maintenance</li>
+          </ul>
+          <a href="mailto:Jmartin@jmnexa.com?subject=JMNexa Demo Request" class="btn">Book Your Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>Questions businesses usually ask</h2>
+          <p>Here are the basics before you book a demo.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does this replace my staff?</h3>
+          <p>No. It helps your team handle more leads, reduce repetitive tasks, and respond faster.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can this work with my current phone number?</h3>
+          <p>In most cases, yes. We can help connect your existing phone process into the automation system.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What businesses is this best for?</h3>
+          <p>HVAC, roofing, landscaping, plumbing, pool companies, and other local service businesses.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How long does setup take?</h3>
+          <p>Most systems can be set up quickly once we have your business information, services, and booking process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to automate your business?</h2>
+        <p>Book a free demo and see how JMNexa can help your business capture more leads, follow up faster, and book more jobs.</p>
+        <a href="mailto:Jmartin@jmnexa.com?subject=JMNexa Demo Request" class="btn">Schedule A Demo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 JMNexa. All rights reserved.</div>
+      <div>Email: <a href="mailto:Jmartin@jmnexa.com">Jmartin@jmnexa.com</a></div>
+    </div>
+  </footer>
+</body>
+</html>
